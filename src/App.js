@@ -1,7 +1,12 @@
+import Header from "./components/Header";
+
 function App() {
+  const name = "tj";
+  const tern = true;
+
   return (
-    <div className="App">
-      <h1>Hello from React</h1>
+    <div className="container">
+      <Header />
     </div>
   );
 }
