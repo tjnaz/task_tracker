@@ -14,15 +14,15 @@ function App() {
     },
     {
       id: 2,
-      text: "Doc appointment",
+      text: "Eid shopping",
       day: "Feb 6th at 2:30pm",
-      reminder: false,
+      reminder: true,
     },
     {
       id: 3,
-      text: "Doc appointment",
+      text: "Client meeting",
       day: "Feb 7th at 2:30pm",
-      reminder: true,
+      reminder: false,
     },
   ]);
 
@@ -31,11 +31,20 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  // Toggle reminder
+  const toggleReminder = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
+  };
+
   return (
     <div className="container">
       <Header />
       {tasks.length > 0 ? (
-        <Tasks tasks={tasks} onDelete={deleteTask} />
+        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
         "No tasks to show"
       )}
